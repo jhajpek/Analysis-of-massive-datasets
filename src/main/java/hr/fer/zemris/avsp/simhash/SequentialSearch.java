@@ -7,7 +7,7 @@ import hr.fer.zemris.avsp.simhash.search.impl.SequentialSearchEngine;
 
 public class SequentialSearch {
 
-    public static void main(String[] args) {
+    public static void main() {
         HashFunction hashFunction = new MD5();
         SearchEngine searchEngine = new SequentialSearchEngine(hashFunction);
         searchEngine.runSearchQueries();

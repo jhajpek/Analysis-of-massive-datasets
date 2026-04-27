@@ -1,7 +1,6 @@
 package hr.fer.zemris.avsp.cf;
 
 import hr.fer.zemris.avsp.Util;
-import hr.fer.zemris.avsp.cf.recommender.CFRecommender;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -20,10 +19,7 @@ public class CFTest {
     @ParameterizedTest
     @MethodSource("testSource")
     public void testCollaborativeFilteringRecommendations(Path inputPath, Path outputPath) throws IOException {
-        Runnable cfAlgorithm = () -> {
-            CFRecommender cfRecommender = new CFRecommender();
-            cfRecommender.runCFQueries();
-        };
+        Runnable cfAlgorithm = CFRecommendations::main;
         Util.runTest(cfAlgorithm, inputPath, outputPath);
     }
 

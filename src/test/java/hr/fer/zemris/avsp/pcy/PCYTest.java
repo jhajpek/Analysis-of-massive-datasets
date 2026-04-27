@@ -1,7 +1,6 @@
 package hr.fer.zemris.avsp.pcy;
 
 import hr.fer.zemris.avsp.Util;
-import hr.fer.zemris.avsp.pcy.search.PCYSearchEngine;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -20,10 +19,7 @@ public class PCYTest {
     @ParameterizedTest
     @MethodSource("testSource")
     public void testFrequentItemPairsSearch(Path inputPath, Path outputPath) throws IOException {
-        Runnable pcyAlgorithm = () -> {
-            PCYSearchEngine pcySearchEngine = new PCYSearchEngine();
-            pcySearchEngine.runPCYAlgorithm();
-        };
+        Runnable pcyAlgorithm = FrequentPairsSearch::main;
         Util.runTest(pcyAlgorithm, inputPath, outputPath);
     }
 

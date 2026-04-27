@@ -22,10 +22,7 @@ public class SequentialSearchTest {
     @ParameterizedTest
     @MethodSource("testSource")
     public void testSequentialSearch(Path inputPath, Path outputPath) throws IOException {
-        Runnable sequentialSearch = () -> {
-            SearchEngine sequentialSearchEngine = new SequentialSearchEngine(new MD5());
-            sequentialSearchEngine.runSearchQueries();
-        };
+        Runnable sequentialSearch = SequentialSearch::main;
         Util.runTest(sequentialSearch, inputPath, outputPath);
     }
 

@@ -1,8 +1,5 @@
 package hr.fer.zemris.avsp.simhash;
 
-import hr.fer.zemris.avsp.simhash.hashing.impl.MD5;
-import hr.fer.zemris.avsp.simhash.search.impl.LSHSearchEngine;
-import hr.fer.zemris.avsp.simhash.search.SearchEngine;
 import hr.fer.zemris.avsp.Util;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -21,11 +18,8 @@ public class LSHSearchTest {
 
     @ParameterizedTest
     @MethodSource("testSource")
-    public void testSequentialSearch(Path inputPath, Path outputPath) throws IOException {
-        Runnable lshSearch = () -> {
-            SearchEngine lshSearchEngine = new LSHSearchEngine(new MD5());
-            lshSearchEngine.runSearchQueries();
-        };
+    public void testLSHSearch(Path inputPath, Path outputPath) throws IOException {
+        Runnable lshSearch = LSHSearch::main;
         Util.runTest(lshSearch, inputPath, outputPath);
     }
 
